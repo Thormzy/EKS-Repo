@@ -6,7 +6,7 @@ pipeline {
         AWS_DEFAULT_REGION="us-east-1"
         IMAGE_REPO_NAME="my-image-repo"
         IMAGE_TAG= "${env.BUILD_ID}"
-        REPOSITORY_URI = "775012328020.dkr.ecr.us-east-1.amazonaws.com/my-image-repo"
+        REPOSITORY_URI = "413034137895.dkr.ecr.us-east-1.amazonaws.com/my-image-repo"
     }
     stages {
         
@@ -41,8 +41,8 @@ pipeline {
         
          stage('Logging into AWS ECR') {
                      environment {
-                        AWS_ACCESS_KEY_ID = credentials('aws_access_key_id')
-                        AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
+                        AWS_ACCESS_KEY_ID = credentials('aws_access_id')
+                        AWS_SECRET_ACCESS_KEY = credentials('aws_access_key')
                          
                    }
                      steps {
@@ -73,8 +73,8 @@ pipeline {
          
          stage('pull image & Deploying application on eks cluster') {
                     environment {
-                       AWS_ACCESS_KEY_ID = credentials('aws_access_key_id')
-                       AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
+                       AWS_ACCESS_KEY_ID = credentials('aws_access_id')
+                       AWS_SECRET_ACCESS_KEY = credentials('aws_access_key')
                  }
                     steps {
                       script{
